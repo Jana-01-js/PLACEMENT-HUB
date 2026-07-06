@@ -1,74 +1,407 @@
-# College Placement Hub
+# 🎓 College Placement Hub
 
-A full-stack placement management system for engineering colleges — built as
-a portfolio project, feature by feature, with each increment type-checked and
-build-verified before moving to the next.
+<div align="center">
+
+### 🚀 Full-Stack Placement Management System for Engineering Colleges
+
+A modern campus recruitment platform that connects **Students**, **Recruiters**, **Placement Officers**, and **Administrators** through a secure, scalable, and intuitive web application.
+
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss)
+
+**⭐ If you like this project, don't forget to Star the repository!**
+
+</div>
+
+---
+
+# 📖 Overview
+
+College Placement Hub is a **complete placement management platform** designed for engineering colleges. It streamlines the campus recruitment process by enabling secure collaboration between students, recruiters, placement officers, and administrators.
+
+The project follows an **incremental development approach**, where every feature is implemented, type-checked, and production-build verified before moving to the next.
+
+---
+
+# ✨ Features
+
+## 🔐 Authentication & Authorization
+
+- JWT Authentication
+- Refresh Token Authentication
+- HTTP-Only Secure Cookies
+- Role-Based Access Control (RBAC)
+- Password Encryption using bcryptjs
+- Protected Routes
+- Secure Middleware
+
+### Supported Roles
+
+- 👨‍🎓 Student
+- 🏢 Recruiter
+- 👨‍💼 Placement Officer
+- ⚙️ Administrator
+
+---
+
+## 🏢 Recruiter Portal
+
+- Company Profile Management
+- Create Job Postings
+- Edit/Delete Jobs
+- View Posted Jobs
+- Approval Workflow
+- Pending/Approved Status
+
+---
+
+## 🎓 Student Portal
+
+- Academic Information
+- Skills Management
+- Resume Upload
+- Projects
+- Certifications
+- Internships
+- Achievements
+- Eligibility Checker
+- Browse Available Jobs
+
+---
+
+## 👨‍💼 Placement Officer
+
+- Review Job Requests
+- Approve Job Posts
+- Reject Job Posts
+- Manage Recruiters
+
+---
+
+## 🎨 Frontend
+
+- React 19
+- TypeScript
+- Tailwind CSS
+- Responsive Design
+- Protected Routes
+- Clean Dashboard UI
+- Modern User Experience
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React 19
+- Vite
+- TypeScript
+- Tailwind CSS
+- React Router
+- Axios
+
+## Backend
+
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcryptjs
+- Multer
+
+---
+
+# 📂 Project Structure
 
 ```
 placement-hub/
-├─ backend/     Node.js + Express + TypeScript + MongoDB API
-└─ frontend/    React 19 + Vite + TypeScript + Tailwind
+│
+├── backend/
+│   ├── src/
+│   ├── uploads/
+│   ├── package.json
+│   └── README.md
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── README.md
+│
+└── README.md
 ```
 
-## What's built so far
+---
 
-| # | Feature | Details |
-|---|---------|---------|
-| 1 | **Authentication** | JWT (access token in memory, refresh token in httpOnly cookie), role-based authorization, 4 roles (student, recruiter, placement_officer, admin) |
-| 2 | **Job Posting + Recruiter flow** | Company profiles, job CRUD, approval workflow gated by the Placement Officer/Admin role |
-| 3 | **Student Profile** | Academic details, skills, projects/certifications/internships/achievements, resume upload, eligibility checker against a specific job |
-| — | **Frontend** | All of the above wired into a working UI with its own visual identity (see `frontend/README.md`) |
+# 🚀 Getting Started
 
-Each backend feature has its own section in `backend/README.md` with the
-exact API surface and the reasoning behind specific decisions (e.g. why
-`bcryptjs` instead of `bcrypt`, why jobs revert to `pending_approval` after
-an edit).
+## 1️⃣ Clone Repository
 
-## Running the whole thing locally
+```bash
+git clone https://github.com/yourusername/placement-hub.git
 
-You need MongoDB running somewhere reachable (local install, Docker, or a
-free Atlas cluster) — grab a connection string for the next step.
+cd placement-hub
+```
 
-**1. Backend**
+---
+
+## 2️⃣ Backend Setup
 
 ```bash
 cd backend
-cp .env.example .env      # paste your MONGO_URI, set the two JWT secrets
+
+cp .env.example .env
+
 npm install
-npm run dev                # http://localhost:5000
+
+npm run dev
 ```
 
-**2. Frontend** (separate terminal)
+Server runs on
+
+```
+http://localhost:5000
+```
+
+---
+
+## 3️⃣ Frontend Setup
+
+Open another terminal
 
 ```bash
 cd frontend
+
 npm install
-npm run dev                # http://localhost:5173, proxies /api to :5000
+
+npm run dev
 ```
 
-Open `http://localhost:5173`, register an account (pick Student, Recruiter,
-or Placement Officer), and you're in. A realistic first walkthrough:
+Application runs on
 
-1. Register as a **Recruiter** → create a company profile → post a job.
-2. Register as a **Placement Officer** (separate browser/incognito, or log
-   out and back in) → approve that job from the queue.
-3. Register as a **Student** → fill in your profile, upload a resume →
-   browse jobs → open the one you posted → check your eligibility.
+```
+http://localhost:5173
+```
 
-## What's next
+---
 
-The natural next increment is **Applications** — the piece that actually
-connects students applying to jobs recruiters review, which unlocks
-Applicant Management on the recruiter side. After that: the Admin feature,
-and the AI features (ATS scoring, mock interview, career roadmap) from the
-original spec.
+# ⚙ Environment Variables
 
-## A few honest notes
+Create a `.env` file inside **backend**
 
-This was built incrementally in a single extended session, verifying
-`tsc --noEmit` and a full production build after every feature. It's a solid
-foundation for a final-year portfolio project, but before treating it as
-production-ready, you'd still want: automated tests, a seeded admin account
-flow, Cloudinary wired up for resume storage (currently local disk — flagged
-in `backend/README.md`), and the Applications feature to close the loop
-between students and recruiters.
+```env
+PORT=5000
+
+MONGO_URI=your_mongodb_connection
+
+JWT_ACCESS_SECRET=your_access_secret
+
+JWT_REFRESH_SECRET=your_refresh_secret
+```
+
+---
+
+# 👨‍💻 Application Workflow
+
+### Recruiter
+
+```
+Register
+      ↓
+Create Company
+      ↓
+Post Job
+      ↓
+Wait For Approval
+```
+
+---
+
+### Placement Officer
+
+```
+Login
+      ↓
+Review Jobs
+      ↓
+Approve / Reject
+```
+
+---
+
+### Student
+
+```
+Register
+      ↓
+Complete Profile
+      ↓
+Upload Resume
+      ↓
+Browse Jobs
+      ↓
+Eligibility Check
+```
+
+---
+
+# 📸 Screenshots
+
+> Add screenshots here
+
+```
+Home Page
+
+Dashboard
+
+Student Profile
+
+Recruiter Dashboard
+
+Placement Officer Dashboard
+
+Job Details
+
+Eligibility Checker
+```
+
+---
+
+# 📌 Current Progress
+
+| Module | Status |
+|---------|--------|
+| Authentication | ✅ Completed |
+| Role Management | ✅ Completed |
+| Company Management | ✅ Completed |
+| Job Management | ✅ Completed |
+| Student Profile | ✅ Completed |
+| Resume Upload | ✅ Completed |
+| Eligibility Checker | ✅ Completed |
+| Frontend UI | ✅ Completed |
+| Applications | 🚧 In Progress |
+| Admin Panel | 🔜 Planned |
+| AI ATS Score | 🔜 Planned |
+| Mock Interview | 🔜 Planned |
+| Career Roadmap | 🔜 Planned |
+
+---
+
+# 🛣 Roadmap
+
+### Phase 1 ✅
+
+- Authentication
+- Roles
+- Company Management
+- Job Management
+- Student Profiles
+
+### Phase 2 🚧
+
+- Applications
+- Recruiter Applicant Dashboard
+- Application Status
+
+### Phase 3
+
+- Admin Dashboard
+- Analytics
+- Notifications
+- Email Integration
+
+### Phase 4
+
+- AI Resume ATS Scoring
+- AI Mock Interviews
+- AI Career Roadmap
+- Resume Suggestions
+
+---
+
+# 🔒 Security Features
+
+- JWT Authentication
+- Refresh Token Rotation
+- Password Hashing
+- HTTP-Only Cookies
+- Role-Based Authorization
+- Protected API Routes
+- Input Validation
+
+---
+
+# 💡 Future Improvements
+
+- Cloudinary Resume Storage
+- Docker Support
+- Automated Testing
+- CI/CD Pipeline
+- Email Verification
+- Forgot Password
+- Two-Factor Authentication
+- Real-Time Notifications
+- Analytics Dashboard
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+
+2. Create your feature branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Added new feature"
+```
+
+4. Push to your branch
+
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request
+
+---
+
+# ⭐ Support
+
+If you found this project useful:
+
+⭐ Star this repository
+
+🍴 Fork it
+
+📢 Share it with others
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+<div align="center">
+
+## Made with ❤️ using React, TypeScript, Node.js & MongoDB
+
+### ⭐ Star this Repository if you like it!
+
+</div>
