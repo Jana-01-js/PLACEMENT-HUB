@@ -3,12 +3,30 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply min-h-screen bg-paper text-slate-text antialiased;
+    font-family: theme("fontFamily.body");
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
   h1,
   h2,
   h3,
   h4 {
     font-family: theme("fontFamily.display");
   }
+
+  ::selection {
+    @apply bg-brass/30 text-ink;
+  }
+
   :focus-visible {
     outline: 2px solid theme("colors.brass.DEFAULT");
     outline-offset: 2px;
