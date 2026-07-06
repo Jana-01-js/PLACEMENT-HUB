@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const sizeEnum = z.enum(["1-50", "51-200", "201-500", "501-1000", "1000+"]);
+const sizeEnum = z.enum(["1-50", "51-200", "201-500", "501-1000", "1000+", "100-500"]);
 
 export const createCompanySchema = z.object({
   body: z.object({

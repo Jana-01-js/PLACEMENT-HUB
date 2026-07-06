@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
+import { isMockMode } from "@utils/mockStore";
 
 export const connectDB = async (): Promise<void> => {
+  if (isMockMode()) {
+    console.log("[DB] No MONGO_URI detected; using local mock data mode");
+    return;
+  }
+
   const uri = process.env.MONGO_URI;
 
   if (!uri) {

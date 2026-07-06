@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vscode/
+.env
+.env.*
+coverage/
+backend/node_modules/
+frontend/node_modules/
+frontend/dist/
+backend/uploads/resumes/*
+!backend/uploads/resumes/.gitkeep
